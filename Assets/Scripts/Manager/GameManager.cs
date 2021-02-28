@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public Transform[] spiderStartPoints;
     public Transform[] spiderSpawnPoints;
+    public GameObject[] auras;
 
     [SerializeField] private GameObject spiderPrefab;
     [SerializeField] private GameObject gemPrefab;

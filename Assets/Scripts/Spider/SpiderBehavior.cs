@@ -15,6 +15,7 @@ public class SpiderBehavior : MonoBehaviour
     public bool canbeAttacked;
     public ColorType type;
 
+    [SerializeField] private GameObject aura;
     private NavMeshAgent agent;
     private bool arrivedStartPoint = false;
     private bool startPatrolling = false;
@@ -28,6 +29,7 @@ public class SpiderBehavior : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
 
         type = (ColorType)Random.Range(0, 3);
+        aura = Instantiate(GameManager.Instance.auras[(int)type], transform); 
 
         animator.SetBool("IsMoving", true);
         agent.destination = GameManager.Instance.spiderStartPoints[Random.Range(0, 5)].position;
