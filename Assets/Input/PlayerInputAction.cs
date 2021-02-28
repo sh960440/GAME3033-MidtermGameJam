@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/InputAction/PlayerInputAction.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Input/PlayerInputAction.inputactions'
 
 using System;
 using System.Collections;
@@ -62,6 +62,14 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                     ""name"": ""Attack"",
                     ""type"": ""Button"",
                     ""id"": ""94f258da-56d9-4df2-b3eb-e6b756874131"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""1135d1ca-ca11-4f4e-9bc3-82fb16956b1f"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -133,6 +141,28 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                     ""action"": ""StopRotating"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b30399ec-7be6-4e27-87c4-0f46a94e77d2"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""310efbf6-c9e7-45b1-b9bc-8682894d1a0b"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -147,6 +177,7 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         m_PlayerInputActionMap_StopRotating = m_PlayerInputActionMap.FindAction("StopRotating", throwIfNotFound: true);
         m_PlayerInputActionMap_RotateCamera = m_PlayerInputActionMap.FindAction("RotateCamera", throwIfNotFound: true);
         m_PlayerInputActionMap_Attack = m_PlayerInputActionMap.FindAction("Attack", throwIfNotFound: true);
+        m_PlayerInputActionMap_Pause = m_PlayerInputActionMap.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -202,6 +233,7 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerInputActionMap_StopRotating;
     private readonly InputAction m_PlayerInputActionMap_RotateCamera;
     private readonly InputAction m_PlayerInputActionMap_Attack;
+    private readonly InputAction m_PlayerInputActionMap_Pause;
     public struct PlayerInputActionMapActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -212,6 +244,7 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         public InputAction @StopRotating => m_Wrapper.m_PlayerInputActionMap_StopRotating;
         public InputAction @RotateCamera => m_Wrapper.m_PlayerInputActionMap_RotateCamera;
         public InputAction @Attack => m_Wrapper.m_PlayerInputActionMap_Attack;
+        public InputAction @Pause => m_Wrapper.m_PlayerInputActionMap_Pause;
         public InputActionMap Get() { return m_Wrapper.m_PlayerInputActionMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -239,6 +272,9 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                 @Attack.started -= m_Wrapper.m_PlayerInputActionMapActionsCallbackInterface.OnAttack;
                 @Attack.performed -= m_Wrapper.m_PlayerInputActionMapActionsCallbackInterface.OnAttack;
                 @Attack.canceled -= m_Wrapper.m_PlayerInputActionMapActionsCallbackInterface.OnAttack;
+                @Pause.started -= m_Wrapper.m_PlayerInputActionMapActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_PlayerInputActionMapActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_PlayerInputActionMapActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_PlayerInputActionMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -261,6 +297,9 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                 @Attack.started += instance.OnAttack;
                 @Attack.performed += instance.OnAttack;
                 @Attack.canceled += instance.OnAttack;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -273,5 +312,6 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         void OnStopRotating(InputAction.CallbackContext context);
         void OnRotateCamera(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

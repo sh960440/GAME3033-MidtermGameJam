@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Spider
   - Chest
+  - Gem
   layers:
   - Default
   - TransparentFX

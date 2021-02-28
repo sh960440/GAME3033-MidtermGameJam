@@ -7,7 +7,11 @@ public enum ColorType
 {
     RED,
     GREEN,
-    BLUE
+    BLUE,
+    ORANGE,
+    YELLOW,
+    PURPLE,
+    WHITE
 }
 
 public class SpiderBehavior : MonoBehaviour
@@ -29,7 +33,7 @@ public class SpiderBehavior : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
 
         type = (ColorType)Random.Range(0, 3);
-        aura = Instantiate(GameManager.Instance.auras[(int)type], transform); 
+        aura = Instantiate(GameManager.Instance.auraPrefabs[(int)type], transform); 
 
         animator.SetBool("IsMoving", true);
         agent.destination = GameManager.Instance.spiderStartPoints[Random.Range(0, 5)].position;
@@ -68,12 +72,6 @@ public class SpiderBehavior : MonoBehaviour
     public void Die()
     {
         animator.SetBool("IsDead", true);
-    }
-
-    void FindNextPoint()
-    {
-        
-        Debug.Log(agent.destination);
     }
 
     IEnumerator Patrol()
