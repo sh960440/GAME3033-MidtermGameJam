@@ -5,7 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayBehavior : MonoBehaviour
 {
-    [SerializeField] private float movespeed = 3.0f;
+    [SerializeField] private float movespeed = 5.0f;
+    [SerializeField] private Collider detector;
     public float rotateSpeed = 2.0f;
     private Animator animator;
     private Rigidbody rigidbody;
@@ -40,10 +41,12 @@ public class PlayBehavior : MonoBehaviour
     private void OnMove()
     {
         isMoveing = true;
+        animator.SetBool("isRunning", true);
     }
     private void OnStopMoving()
     {
         isMoveing = false;
+        animator.SetBool("isRunning", false);
     }
     private void OnRotate()
     {
@@ -56,12 +59,46 @@ public class PlayBehavior : MonoBehaviour
 
     private void OnAttack()
     {
-        Debug.Log("Attack!");
+        SpiderBehavior[] spiders = FindObjectsOfType<SpiderBehavior>();
+
+        foreach (SpiderBehavior spider in spiders)
+        {
+            if (spider.canbeAttacked)
+            {
+                spider.Die();
+                Destroy(spider.gameObject, 1.0f);
+            }
+        }
+
+        animator.SetBool("Attack", true);
     }
 
     void OnRotateCamera(InputValue value)
     {
         mouseValue = value.Get<Vector2>();
         mouseValue.Normalize();
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Spider"))
+        {
+            other.GetComponent<SpiderBehavior>().canbeAttacked = true;
+            Debug.Log("Find a spider!");
+        }
+
+        if (other.CompareTag("Chest"))
+        {
+            other.GetComponent<Animator>().SetBool("IsOpen", true);
+            Debug.Log("Find a Chest!");
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Spider"))
+        {
+            other.GetComponent<SpiderBehavior>().canbeAttacked = false;
+        }
     }
 }

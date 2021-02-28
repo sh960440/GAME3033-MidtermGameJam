@@ -822,6 +822,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6341412552638625002}
   - component: {fileID: 372433625257776920}
+  - component: {fileID: 5780421945212788465}
   m_Layer: 0
   m_Name: Chest_Level_2
   m_TagString: Untagged
@@ -865,6 +866,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &5780421945212788465
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8719405494807584370}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.4759154, y: 4.621785, z: 3.67959}
+  m_Center: {x: -0.05321222, y: 1.8108907, z: 0.23036753}
 --- !u!1 &9000475193046917824
 GameObject:
   m_ObjectHideFlags: 0
